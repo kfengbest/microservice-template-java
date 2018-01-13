@@ -16,15 +16,19 @@ pipeline {
         }
         stage('Packaging'){
             steps {
-                sh "git archive -v -o artifect.zip --format=zip HEAD"
+                sh "mkdir artifect"
+                sh "cp Dockerfile artifect"
+                sh "cp Dockerrun.aws.json artifect"
+                sh "cp ./target/*.war artifect"
+                sh "zip -r artifect.zip artifect/*"
             }
         }
         stage('Upload to S3') {
             steps {
                 sh "ls"
-                // withAWS(region:"us-east-1",credentials:"global_usnp_aws_r") {
-                //     s3Upload(file:"artifect.zip", bucket:"s3-fusion-service-prd",path:"artifect.zip")
-                // }
+                 withAWS(region:"us-east-1",credentials:"global_usnp_aws_r") {
+                     s3Upload(file:"artifect.zip", bucket:"s3-fusion-service-prd",path:"artifect.zip")
+                 }
             }
         }
     }
