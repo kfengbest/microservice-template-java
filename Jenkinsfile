@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh "mvn clean build"
+                sh "mvn clean package"
             }
         }
         stage('Test') {
@@ -16,7 +16,6 @@ pipeline {
         }
         stage('Packaging'){
             steps {
-                sh "mvn package"
                 sh "git archive -v -o artifect.zip --format=zip HEAD"
             }
         }
