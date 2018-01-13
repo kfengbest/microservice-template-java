@@ -1,6 +1,5 @@
 {
   "AWSEBDockerrunVersion": "1",
-  "Logging": "/tmp/sample-app",
   "Image": {
   	"Update": "false"
   }
