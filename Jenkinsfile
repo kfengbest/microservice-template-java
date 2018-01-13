@@ -16,11 +16,7 @@ pipeline {
         }
         stage('Packaging'){
             steps {
-                sh "mkdir artifect"
-                sh "cp Dockerfile artifect"
-                sh "cp Dockerrun.aws.json artifect"
-                sh "cp ./target/*.war artifect"
-                sh "zip -r artifect.zip artifect/*"
+                sh "zip -r artifect.zip Dockerfile Dockerrun.aws.json ./target/*.war"
             }
         }
         stage('Upload to S3') {
