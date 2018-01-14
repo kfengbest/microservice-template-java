@@ -33,7 +33,8 @@ pipeline {
                 sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
                 sh 'docker push kfengbest/mst-java:latest'
                 }
-            }                
+            }
+        }                
         stage('Upload to S3') {
             steps {
                 sh "ls"
