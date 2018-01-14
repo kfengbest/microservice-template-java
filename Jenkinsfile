@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh "docker build -t jk/v1 ."
+                sh "docker build -t kfengbest/mst-java:latest ."
             }
         }        
         stage('Upload to S3') {
