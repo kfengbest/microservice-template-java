@@ -21,6 +21,12 @@ pipeline {
                 sh "zip -r artifect.zip Dockerfile Dockerrun.aws.json ./*.war"
             }
         }
+        stage('Docker Build') {
+        agent any
+        steps {
+            sh 'docker build -t jk/v1 .'
+        }
+        }        
         stage('Upload to S3') {
             steps {
                 sh "ls"
