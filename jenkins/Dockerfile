@@ -29,10 +29,3 @@ ENV MAVEN_HOME /opt/maven
 # install docker
 COPY install-docker.sh /install-docker.sh
 RUN /install-docker.sh
-
-# Set up Kubernetes
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBERNETES_VERSION/bin/linux/amd64/kubectl
-RUN chmod +x ./kubectl
-RUN mv ./kubectl /usr/local/bin/kubectl
-# Configure access to the Kubernetes Cluster
-ADD install/config ~/.kube
