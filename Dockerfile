@@ -1,6 +1,6 @@
 FROM tomcat:8
 
-ADD microservice-template-java.war /usr/local/tomcat/webapps/
+COPY ./target/microservice-template-java.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
