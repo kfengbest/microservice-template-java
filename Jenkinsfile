@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh "mvn clean package"
+                sh "pwd"
             }
         }
         stage('Test') {
@@ -19,10 +20,11 @@ pipeline {
                 sh "rm -rf artifect.zip"
                 sh "cp ./target/*.war ."
                 sh "zip -r artifect.zip Dockerfile Dockerrun.aws.json ./*.war"
+                sh "pwd"
+                sh "ls"
             }
         }
         stage('Docker Build') {
-            agent any
             steps {
                 sh "pwd"
                 sh "ls -la"
