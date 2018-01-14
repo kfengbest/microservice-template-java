@@ -1,3 +1,5 @@
+jenkins/environment/*
+jenkins/.credentials/*
 target/*
 .idea/*
 *.iml
