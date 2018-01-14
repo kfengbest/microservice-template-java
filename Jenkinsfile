@@ -22,10 +22,12 @@ pipeline {
             }
         }
         stage('Docker Build') {
-        agent any
-        steps {
-            sh 'docker build -t jk/v1 .'
-        }
+            agent any
+            steps {
+                sh "pwd"
+                sh "ls -la"
+                sh "docker build -t jk/v1 ."
+            }
         }        
         stage('Upload to S3') {
             steps {
